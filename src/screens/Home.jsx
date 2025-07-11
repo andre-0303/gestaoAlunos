@@ -22,8 +22,11 @@ const Home = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    navigate("/signin");
+    const confirmLogout = window.confirm("Tem certeza que deseja sair?");
+    if (confirmLogout) {
+      localStorage.removeItem("isLoggedIn");
+      navigate("/signin");
+    }
   };
 
   return (
@@ -50,9 +53,15 @@ const Home = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-2">
-              <Button>Infor G8</Button>
-              <Button>Infor G9</Button>
-              <Button>Infor G10</Button>
+              <Button onClick={() => navigate("/turma/Infor_G8")}>
+                Infor G8
+              </Button>
+              <Button onClick={() => navigate("/turma/Infor_G9")}>
+                Infor G9
+              </Button>
+              <Button onClick={() => navigate("/turma/Infor_G10")}>
+                Infor G10
+              </Button>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center gap-4 mt-4">
