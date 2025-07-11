@@ -1,12 +1,11 @@
 import "./App.css";
 import React from "react";
-import { Button } from "./components/ui/button";
+import SignIn from "./screens/SignIn";
 
 function App() {
   return (
     <>
-      <h1>ababa</h1>
-      <Button>Zidas</Button>
+      <SignIn />
     </>
   );
 }
