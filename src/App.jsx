@@ -10,6 +10,7 @@ import Home from "./screens/Home";
 import ListaAlunos from "./screens/ListaAluno";
 import FormAluno from "./screens/FormAluno";
 import NotasAlunos from "./screens/NotasAlunos";
+import GraficosTurma from "./screens/GraficosNotas";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/aluno/novo" element={<FormAluno />} />
         <Route path="/aluno/editar/:id" element={<FormAluno />} />
         <Route path="/notas/:id" element={<NotasAlunos />} />
+        <Route path="/graficos" element={<GraficosTurma />} />
         <Route path="*" element={<Navigate to="/signin" replace />} />
       </Routes>
     </Router>

@@ -62,6 +62,9 @@ const Home = () => {
               <Button onClick={() => navigate("/turma/Infor_G10")}>
                 Infor G10
               </Button>
+              <Button onClick={() => navigate("/graficos")}>
+                📊 Ver Gráficos da Turma
+              </Button>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center gap-4 mt-4">
