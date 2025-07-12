@@ -23,6 +23,11 @@ const NotasAlunos = () => {
 
   const fetchMaterias = async (turma) => {
     const res = await api.get(`/materias/turma/${turma}`);
+    console.log(`Turma: ${turma}`);
+    console.log("Matérias:", res.data);
+    if (!res.data.length) {
+      alert("Essa turma não possui matérias cadastradas.");
+    }
     setMaterias(res.data);
   };
 
@@ -68,15 +73,18 @@ const NotasAlunos = () => {
         await api.put(`/notas/${notaAtual.id}`, { nota: valor });
       } else {
         await api.post(`/notas`, {
-          alunoId: alunoId,
-          materiaId,
+          alunoId: Number(alunoId),
+          materiaId: Number(materiaId),
           nota: valor,
         });
       }
       alert("Nota salva com sucesso!");
       fetchNotas();
     } catch (err) {
-      alert("Erro ao salvar nota.");
+      console.error(err);
+      alert(
+        "Erro ao salvar nota. Verifique se o aluno existe e se os dados estão corretos."
+      );
     }
   };
 

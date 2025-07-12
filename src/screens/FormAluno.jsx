@@ -62,7 +62,7 @@ const FormAluno = () => {
       nome,
       idade: Number(idade),
       email,
-      turma,
+      turma: turma.replace(/\s+/g, "_"),
     };
 
     try {
