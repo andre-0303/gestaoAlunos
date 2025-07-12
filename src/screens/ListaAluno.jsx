@@ -38,7 +38,7 @@ const ListaAluno = () => {
         setAlunos(res.data || []);
       } catch (error) {
         console.error("Erro ao buscar alunos:", error);
-        setAlunos([]); // evita estado indefinido
+        setAlunos([]); 
       } finally {
         setLoading(false);
       }
@@ -46,6 +46,18 @@ const ListaAluno = () => {
 
     fetchAlunos();
   }, [turma]);
+
+  const handleDelete = async (id) => {
+    const confirmar = confirm("Tem certeza que deseja excluir este aluno?");
+    if (!confirmar) return;
+
+    try {
+      await api.delete(`/alunos/${id}`);
+      setAlunos((prev) => prev.filter((aluno) => aluno.id !== id));
+    } catch (error) {
+      alert("Erro ao deletar aluno");
+    }
+  };
 
   return (
     <>
@@ -69,10 +81,32 @@ const ListaAluno = () => {
               <Card key={aluno.id}>
                 <CardHeader>
                   <CardTitle>{aluno.nome}</CardTitle>
-                  <CardDescription> {aluno.email} </CardDescription>
+                  <CardDescription>{aluno.email}</CardDescription>
                 </CardHeader>
-                <CardContent className="text-muted-foreground">
-                  Idade: {aluno.idade}
+                <CardContent className="text-muted-foreground space-y-2">
+                  <p>Idade: {aluno.idade}</p>
+                  <div className="flex gap-2 mt-2">
+                    <Button
+                      size="sm"
+                      onClick={() => navigate(`/notas/${aluno.id}`)}
+                    >
+                      Ver Notas
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => navigate(`/aluno/editar/${aluno.id}`)}
+                    >
+                      Editar
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => handleDelete(aluno.id)}
+                    >
+                      Deletar
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
