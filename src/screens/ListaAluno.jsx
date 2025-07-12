@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Loader2 } from "lucide-react";
 
 const ListaAluno = () => {
   const { id: turma } = useParams();
@@ -38,7 +39,7 @@ const ListaAluno = () => {
         setAlunos(res.data || []);
       } catch (error) {
         console.error("Erro ao buscar alunos:", error);
-        setAlunos([]); 
+        setAlunos([]);
       } finally {
         setLoading(false);
       }
@@ -72,7 +73,12 @@ const ListaAluno = () => {
           Turma: {turma.replace("_", "")}
         </h1>
         {loading ? (
-          <p className="text-muted-foreground">Carregando alunos...</p>
+          <main className="min-h-screen flex items-center justify-center">
+            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+              <Loader2 className="w-6 h-6 animate-spin text-green-700" />
+              <p>Carregando dados...</p>
+            </div>
+          </main>
         ) : alunos.length === 0 ? (
           <p className="text-muted-foreground">Nenhum aluno encontrado.</p>
         ) : (
@@ -94,7 +100,7 @@ const ListaAluno = () => {
                     </Button>
                     <Button
                       size="sm"
-                      variant="secondary"
+                      className="bg-yellow-500 hover:bg-yellow-400"
                       onClick={() => navigate(`/aluno/editar/${aluno.id}`)}
                     >
                       Editar

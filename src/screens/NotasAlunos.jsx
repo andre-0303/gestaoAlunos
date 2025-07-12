@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Loader2 } from "lucide-react";
 
 const NotasAlunos = () => {
   const { id: alunoId } = useParams();
@@ -89,7 +90,14 @@ const NotasAlunos = () => {
   };
 
   if (loading) {
-    return <p className="text-muted-foreground">Carregando dados...</p>;
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2 text-muted-foreground">
+          <Loader2 className="w-6 h-6 animate-spin" />
+          <p>Carregando dados...</p>
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -100,9 +108,9 @@ const NotasAlunos = () => {
           Voltar
         </Button>
         <h1 className="text-2xl font-bold text-center">
-          Notas de {aluno?.nome}
+          Médias de {aluno?.nome}
         </h1>
-        <div className="w-10" /> {/* espaçamento */}
+        <div className="w-10" />
       </div>
 
       <div className="grid gap-4">
