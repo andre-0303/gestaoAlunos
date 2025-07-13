@@ -1,7 +1,7 @@
 
 # 📊 Gestão de Alunos - Informática
 
-Sistema web para gestão de turmas, alunos e visualização de gráficos estatísticos de desempenho por matéria. Feito com **React**, **Tailwind CSS**, **ShadCN UI**, **Recharts** e **API REST** com Node.js + SQLite.
+Sistema web para gestão de turmas, alunos e visualização de gráficos estatísticos de desempenho por matéria. Feito com **React**, **Tailwind CSS**, **ShadCN UI**, **Recharts** e **API REST** com Node.js + Neon.
 
 ---
 
