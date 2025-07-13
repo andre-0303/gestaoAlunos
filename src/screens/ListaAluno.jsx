@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const ListaAluno = () => {
   const { id: turma } = useParams();
@@ -63,10 +64,14 @@ const ListaAluno = () => {
   return (
     <>
       <main className="min-h-screen p-4">
-        <div className="mb-4">
+        <div className="mb-4 flex justify-between">
           <Button onClick={() => navigate(-1)} variant="outline">
-            <ArrowLeft className="mr-2" size={18} />
+            <ArrowLeft className="mr-1 " size={18} />
             Voltar
+          </Button>
+          <Button onClick={() => navigate(`/aluno/novo?turma=${turma}`)}>
+            <Plus className="mr-2" size={18} />
+            Adicionar Aluno
           </Button>
         </div>
         <h1 className="text-3xl font-bold mb-4">
