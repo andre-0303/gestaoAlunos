@@ -66,7 +66,7 @@ const ListaAluno = () => {
       <main className="min-h-screen p-4">
         <div className="mb-4 flex justify-between">
           <Button onClick={() => navigate(-1)} variant="outline">
-            <ArrowLeft className="mr-1 " size={18} />
+            <ArrowLeft className="mr-1" size={18} />
             Voltar
           </Button>
           <Button onClick={() => navigate(`/aluno/novo?turma=${turma}`)}>
